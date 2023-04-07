@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Import Excel Data into database in PHP</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Config</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-color:beige">
+<body style="background-color:white">
     
-    <div class="container" style="padding-top: 200px ; width: 400px;">
+    <div class="container" style="padding-top: 30px ; width: 400px;">
         <div class="row">
             <div class="col-md-12 mt-4">
 
@@ -21,10 +21,10 @@
                     unset($_SESSION['message']);
                 }
                 ?>
-
+                <!-- import section -->
                 <div class="card">
-                    <div class="card-header" style="background-color:#aa2020 ; clear: both">
-                        <h4 style="color:white">IMPORT EXCEL TO GOSOFTDB</h4>
+                    <div class="card-header" style="background-color:#912929">
+                        <h4 style="color:white">Import,Export File</h4>
                     </div> 
                     <div class="card-body">
 
@@ -32,15 +32,34 @@
 
                             <input type="file" name="import_file" class="form-control" />
                             <button type="submit" name="save_excel_data" class="btn btn-primary mt-3">Import</button>
-
                         </form>
+                        
+                    </div>
+                </div>
 
+                <!-- export section -->
+                <div class="card mt-5">
+                    <div class="card-header" style="background-color:#912929">
+                        <h4 style="color:white">Export File</h4>
+                    </div> 
+                    <div class="card-body">
+
+                        <form action="code.php" method="POST">
+                            <select name="export_file_type" class="form-control">
+                                <option value="xlsx">XLSX</option>
+                                <option value="xls">XLS</option>
+                                <option value="csv">CSV</option>
+                            </select>
+
+                            <button type="submit" name="export_excel_btn" class="btn btn-primary mt-1">Export</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
