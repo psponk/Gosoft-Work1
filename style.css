@@ -1,0 +1,86 @@
+.pic {
+    height: 20px;
+    width: 100px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(Zeppelin52.otf);
+}
+
+body {
+    background-image: url("logo2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Times New Roman";
+
+}
+
+.container {
+    padding-top: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #de152c;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: myFirstFont;
+    font-size: 15px;
+}
+
+li a:hover:not(.active) {
+    background-color: #fff1f0;
+    text-decoration: none;
+    color: #de152c;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    li a {
+        display: inline-block;
+        padding: 8px 8px;
+    }
+}
+
+.active {
+    background-color: #ffff;
+}
+
+h4 {
+    margin-bottom: 0rem;
+}
+
+.card {
+    border-radius: 15px 15px 15px 15px;
+}
+
+.card-header {
+    border-radius: 15px 15px 0px 0px !important;
+}
