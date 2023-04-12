@@ -15,14 +15,15 @@
     <!-- navbar -->
     <ul>
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="index.php">manage</a></li>
+        <li><a href="index.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li style="float:right"><a href="">lorem</a></li>
+        <li style="float:right"><a href="">Asset Management</a></li>
     </ul>
+
     <!-- main import export part -->
-    <div class="container" style="padding-top: 30px ; width: 450px;">
+    <div class="container" style="max-width: 1500px; margin-top:8%">
         <div class="row">
-            <div class="col" style="margin-top: 20%">
+            <div class="col-sm-6" style="margin-top: 1%">
                 <?php
                 if (isset($_SESSION['message'])) {
                     $message = $_SESSION['message'];
@@ -33,29 +34,47 @@
                 <!-- import section -->
                 <div class="card">
                     <div class="card-header" style="background-color:#940d03">
-                        <h4 style="color:white ; ">Import File</h4>
+                        <h4 style="color:white ;text-align:center">Import File</h4>
                     </div>
                     <div class="card-body text-center">
 
                         <form action="code.php" method="POST" enctype="multipart/form-data">
+                            <p style="Text-align:left ;margin-bottom: 0px ; font-weight : bold">Select Database</p>
+                            <select name="db" class="form-control enctype=" multipart/form-data">
+                                <option value="students">students</option>
+                                <option value="studentss">studentss</option>
+                                <option value="studentsss">studentsss</option>
+                            </select>
+                        
+                            <p style="Text-align:left ;margin-bottom: 0px ; margin-top:10px  ; font-weight : bold">Select File</p>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="import_file" name="import_file">
                                 <label class="custom-file-label" for="import_file" style="text-align:left">Choose File (.XLSX .XLS .CSV)</label>
                             </div>
+
                             <button type="submit" name="save_excel_data" class="btn btn-secondary mt-3">Import</button>
                         </form>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-sm-6" style="margin-top: 1%">
                 <!-- export section -->
-                <div class="card mt-5">
+                <div class="card">
                     <div class="card-header" style="background-color:#940d03">
-                        <h4 style="color:white">Export File</h4>
+                        <h4 style="color:white ;text-align:center">Export File</h4>
                     </div>
                     <div class="card-body text-center">
 
                         <form action="code.php" method="POST">
-                            <select name="export_file_type" class="form-control enctype=" multipart/form-data">
+                            <p style="Text-align:left ;margin-bottom: 0px ; font-weight : bold">Select Database</p>
+                            <select name="db" class="form-control enctype=" multipart/form-data">
+                                <option value="students">students</option>
+                                <option value="studentss">studentss</option>
+                                <option value="studentsss">studentsss</option>
+                            </select>
+
+                            <p style="Text-align:left ;margin-bottom: 0px ; margin-top:10px  ; font-weight : bold">File Type</p>
+                            <select name="export_file_type" class="form-control enctype=" multipart/form-data>
                                 <option value="xlsx">XLSX</option>
                                 <option value="xls">XLS</option>
                                 <option value="csv">CSV</option>

@@ -15,7 +15,17 @@ if(isset($_POST['export_excel_btn']))
     $fileName = "student-sheet";
 
     // Database Name (Change here)
+    $db = $_POST['db'];
+
+    // Connect to the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = $db;
+
+
     $student = "SELECT * FROM students";
+    $con = new mysqli($servername, $username, $password, $dbname);
     $query_run = mysqli_query($con, $student);
 
     if(mysqli_num_rows($query_run) > 0)
@@ -73,7 +83,16 @@ if(isset($_POST['export_excel_btn']))
 
 if(isset($_POST['save_excel_data']))
 {
+
+    $db = $_POST['db'];
+    // Connect to the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = $db;
+
     $fileName = $_FILES['import_file']['name'];
+    $con = new mysqli($servername, $username, $password, $dbname);
     $file_ext = pathinfo($fileName, PATHINFO_EXTENSION);
 
     $allowed_ext = ['xls','csv','xlsx'];
