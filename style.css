@@ -15,7 +15,6 @@ body {
     background-position: center;
     background-attachment: fixed;
     font-family: "Times New Roman";
-
 }
 
 .container {
@@ -52,7 +51,6 @@ li a {
     text-decoration: none;
     font-weight: bold;
     font-family: myFirstFont;
-    font-size: 15px;
 }
 
 li a:hover:not(.active) {
@@ -61,11 +59,11 @@ li a:hover:not(.active) {
     color: #de152c;
 }
 
-/* Media query for screens smaller than 600px */
-@media (max-width: 600px) {
+@media (max-width: 850px) { 
     li a {
         display: inline-block;
         padding: 8px 8px;
+        font-size : 100px !important; 
     }
 }
 
@@ -84,3 +82,9 @@ h4 {
 .card-header {
     border-radius: 15px 15px 0px 0px !important;
 }
+
+.corner{
+    padding: 8px 8px;
+    font-size : 0.5em !important;  
+}
+

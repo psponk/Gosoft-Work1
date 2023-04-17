@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_GET['deleteid'])) {
+if (isset($_GET["deleteid"])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -16,11 +16,11 @@ if (isset($_GET['deleteid'])) {
     $sql = "delete from `students` where id=$id";
     $result = mysqli_query($con,$sql);
     if($result){
-        echo"Deleted Successful";
+        $_SESSION['deletemessage'] = "Successfully Delete";
         header('Location: view.php?db='.$db.'');
     }
     else{
-        die(mysqli_error($con));
+        $_SESSION['deletemessage'] = "Deleted Fail";
+        header('Location: view.php?db='.$db.'');
     }
-
 }

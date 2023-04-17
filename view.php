@@ -9,19 +9,46 @@ include 'dbconfig.php'
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>View</title>
     <link href="style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body style="background-color:white">
+    <?php
+    if (isset($_SESSION['addmessage'])) {
+        $addmessage = $_SESSION['addmessage'];
+        unset($_SESSION['addmessage']);
+        echo "<script>alert('$addmessage');</script>";
+    }
+
+    if (isset($_SESSION['deletemessage'])) {
+        $deletemessage = $_SESSION['deletemessage'];
+        unset($_SESSION['deletemessage']);
+        echo "<script>alert('$deletemessage');</script>";
+    }
+    if (isset($_SESSION['delete_mul'])) {
+        $delete_mul = $_SESSION['delete_mul'];
+        unset($_SESSION['delete_mul']);
+        echo "<script>alert('$delete_mul');</script>";
+    }
+
+    ?>
+    <script>
+        function confirmDelete(id, db) {
+            if (confirm("Are you sure you want to delete this record (id = " + id + ") ? ")) {
+                window.location.href = "delete.php?deleteid=" + id + "&db=" + db;
+            }
+        }
+    </script>
     <!-- navbar -->
     <ul>
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
         <li><a href="index.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li style="float:right"><a href="">Asset Management</a></li>
+        <li class="corner" style="float:right"><a href="">Asset Management</a></li>
     </ul>
+
     <div style="overflow-x:auto;">
         <table class="table">
             <thead class="thead-dark">
@@ -39,7 +66,7 @@ include 'dbconfig.php'
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
                     <p style="Text-align:left ;margin-bottom: 0px ; margin-top:10px  ; font-weight : bold">Choose Database</p>
                     <form method="GET" style="display: inline-block;">
-                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 200px; display: inline-block;">
+                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 100px; display: inline-block;">
                             <option value="">Select Database</option>
                             <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                             <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
@@ -47,9 +74,14 @@ include 'dbconfig.php'
                         </select>
                     </form>
                     <?php if (isset($_GET['db'])) : ?>
-                        <button class="btn btn-success" style="display: inline-block; float: right;">
-                            <a href="add.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Add Data</a>
-                        </button>
+                        <div style="width: 180px; float: right;">
+                            <button class="btn btn-warning" style="float: right; margin-right: 10px;">
+                                <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
+                            </button>
+                            <button class="btn btn-success" style="margin-left: 10px;">
+                                <a href="addpage.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Add Data</a>
+                            </button>
+                        </div>
                     <?php endif; ?>
                 </div>
 
@@ -77,19 +109,19 @@ include 'dbconfig.php'
                             $phone = $row['phone'];
                             $course = $row['course'];
                             echo '
-                <tr>
-                    <th scope="row">' . $id . '</th>
-                    <td>' . $fullname . '</td>
-                    <td>' . $email . '</td>
-                    <td>' . $phone . '</td>
-                    <td>' . $course . '</td>
-                    <td align="center width: 180px;">
-                        <div>
-                            <button type="button" class="btn btn-primary"><a href="update.php?id=' . $id . '&db=' . $db . '" class="text-light">Update</a></button>
-                            <button type="button" class="btn btn-danger"><a href="delete.php?deleteid=' . $id . '&db=' . $db . '" class="text-light"/>Delete</a></button>
-                        </div>
-                    </td>
-                </tr>';
+            <tr>
+                <th scope="row">' . $id . '</th>
+                <td>' . $fullname . '</td>
+                <td>' . $email . '</td>
+                <td>' . $phone . '</td>
+                <td>' . $course . '</td>
+                <td align="center" width="180px;">
+                    <div>
+                        <button type="button" class="btn btn-primary"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                    </div>
+                </td>
+            </tr>';
                         }
                     }
                 }
@@ -97,3 +129,5 @@ include 'dbconfig.php'
             </tbody>
         </table>
     </div>
+
+</body>
