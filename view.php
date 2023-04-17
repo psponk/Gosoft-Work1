@@ -46,7 +46,7 @@ include 'dbconfig.php'
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
         <li><a href="index.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li class="corner" style="float:right"><a href="">Asset Management</a></li>
+        <li style="float:right"><a href="">Asset Management</a></li>
     </ul>
 
     <div style="overflow-x:auto;">
@@ -64,9 +64,9 @@ include 'dbconfig.php'
             </thead>
             <tbody>
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
-                    <p style="Text-align:left ;margin-bottom: 0px ; margin-top:10px  ; font-weight : bold">Choose Database</p>
+                    <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold">Choose Database</p>
                     <form method="GET" style="display: inline-block;">
-                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 100px; display: inline-block;">
+                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
                             <option value="">Select Database</option>
                             <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                             <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
@@ -74,7 +74,7 @@ include 'dbconfig.php'
                         </select>
                     </form>
                     <?php if (isset($_GET['db'])) : ?>
-                        <div style="width: 180px; float: right;">
+                        <div style="width: 200px; float: right;">
                             <button class="btn btn-warning" style="float: right; margin-right: 10px;">
                                 <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
                             </button>

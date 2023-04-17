@@ -39,6 +39,16 @@ include 'dbconfig.php'
                 <h1 style='color: white'>Add data to <?php echo $_GET['db'] ?></h1>
             </div>
             <div class="card-body text-center">
+                <form method="GET" style="display: inline-block;">
+                    <p style= "display: inline-block;">
+                        <label for="fullname">Select Database:</label>
+                    <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
+                        <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
+                        <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
+                        <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
+                    </select>
+                    </p>
+                </form>
                 <form name="add_data" action="add.php?db=<?php echo $_GET['db'] ?>" method="post">
                     <p>
                         <label for="fullname">fullname:</label>
