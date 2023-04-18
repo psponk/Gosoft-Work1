@@ -76,7 +76,7 @@ if(isset($_POST['export_excel_btn']))
     else
     {
         $_SESSION['message'] = "No Record Found";
-            header('Location: index.php');
+            header('Location: file.php');
             exit(0);
         }
     }
@@ -127,13 +127,13 @@ if(isset($_POST['save_excel_data']))
         if(isset($msg))
         {
             $_SESSION['message'] = "Successfully Imported";
-            header('Location: index.php');
+            header('Location: file.php');
             exit(0);
         }
         else
         {
             $_SESSION['message'] = "Not Imported";
-            header('Location: index.php');
+            header('Location: file.php');
             exit(0);
         }
     }

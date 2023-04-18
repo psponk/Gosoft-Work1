@@ -44,9 +44,9 @@ include 'dbconfig.php'
     <!-- navbar -->
     <ul>
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="index.php">file</a></li>
+        <li><a href="file.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li style="float:right"><a href="">Asset Management</a></li>
+        <li style="float:right"><a href="index.php">Asset Management</a></li>
     </ul>
 
     <div style="overflow-x:auto;">
@@ -59,34 +59,87 @@ include 'dbconfig.php'
                     <th scope="col">Phone</th>
                     <th scope="col">Course</th>
                     <th scope="col" style="text-align: center ; width: 180px;">Manage</th>
-
                 </tr>
             </thead>
             <tbody>
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
-                    <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold">Choose Database</p>
-                    <form method="GET" style="display: inline-block;">
-                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
-                            <option value="">Select Database</option>
-                            <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
-                            <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
-                            <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
-                        </select>
-                    </form>
-                    <?php if (isset($_GET['db'])) : ?>
-                        <div style="width: 200px; float: right;">
-                            <button class="btn btn-warning" style="float: right; margin-right: 10px;">
-                                <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
-                            </button>
-                            <button class="btn btn-success" style="margin-left: 10px;">
-                                <a href="addpage.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Add Data</a>
-                            </button>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold">Choose Database</p>
+                            <form method="GET" style="display: inline-block;">
+                                <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
+                                    <option value="">Select Database</option>
+                                    <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
+                                    <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
+                                    <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
+                                </select>
+                            </form>
                         </div>
-                    <?php endif; ?>
+                        <div class="col-md-4">
+                            <form method="post">
+                                <div class="input-group">
+                                    <input name="search" type="text" class="form-control" placeholder="Search data" style="margin-top: 25px">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-dark btn-sm" style="margin-top: 25px" name="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <?php if (isset($_GET['db'])) : ?>
+                                <div role="group">
+                                    <button class="btn btn-dark" style="margin-top: 25px; float: right;">
+                                        <a href="addpage.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Add Data</a>
+                                    </button>
+                                    <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; ">
+                                        <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- search bar -->
                 <?php
-                if (isset($_GET['db'])) {
+                if (isset($_POST['submit'])) {
+                    $db = $_GET['db'];
+                    $search = $_POST['search'];
+                    $sql = "Select * from `students` where id like '%$search%' or fullname like '%$search%' or email like '%$search%' or phone like '%$search%' or course like '%$search%'";
+                    $result = mysqli_query($con, $sql);
+                    if ($result) {
+                        if (mysqli_num_rows($result)>0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $id = $row['id'];
+                                $fullname = $row['fullname'];
+                                $email = $row['email'];
+                                $phone = $row['phone'];
+                                $course = $row['course'];
+                                echo '
+                    <tr>
+                        <th scope="row">' . $id . '</th>
+                        <td>' . $fullname . '</td>
+                        <td>' . $email . '</td>
+                        <td>' . $phone . '</td>
+                        <td>' . $course . '</td>
+                        <td align="center" width="180px;">
+                            <div>
+                                <button type="button" class="btn btn-info"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                                <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>';
+                            }
+                        }
+                        if ($_POST['search']==""){
+                            echo "<script>alert('No Data Found');</script>";
+                        }
+                        else{
+                            echo "<script>alert('No Data Found');</script>";
+                            header("Refresh:0");
+                        }
+                    }
+                } else if (isset($_GET['db'])) {
                     $db = $_GET['db'];
                     // Connect to the database
                     $servername = "localhost";
@@ -109,19 +162,19 @@ include 'dbconfig.php'
                             $phone = $row['phone'];
                             $course = $row['course'];
                             echo '
-            <tr>
-                <th scope="row">' . $id . '</th>
-                <td>' . $fullname . '</td>
-                <td>' . $email . '</td>
-                <td>' . $phone . '</td>
-                <td>' . $course . '</td>
-                <td align="center" width="180px;">
-                    <div>
-                        <button type="button" class="btn btn-primary"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
-                    </div>
-                </td>
-            </tr>';
+                <tr>
+                    <th scope="row">' . $id . '</th>
+                    <td>' . $fullname . '</td>
+                    <td>' . $email . '</td>
+                    <td>' . $phone . '</td>
+                    <td>' . $course . '</td>
+                    <td align="center" width="180px;">
+                        <div>
+                            <button type="button" class="btn btn-info"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                        </div>
+                    </td>
+                </tr>';
                         }
                     }
                 }

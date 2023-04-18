@@ -26,7 +26,7 @@ include 'dbconfig.php'
     <!-- navbar -->
     <ul>
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="index.php">file</a></li>
+        <li><a href="file.php">file</a></li>
         <li><a href="view.php">view</a></li>
         <li style="float:right"><a href="">Asset Management</a></li>
     </ul>
