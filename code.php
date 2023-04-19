@@ -140,7 +140,7 @@ if(isset($_POST['save_excel_data']))
     else
     {
         $_SESSION['message'] = "Invalid File";
-        header('Location: index.php');
+        header('Location: file.php');
         exit(0);
     }
 }

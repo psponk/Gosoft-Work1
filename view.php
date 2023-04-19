@@ -13,6 +13,13 @@ include 'dbconfig.php'
     <link href="style.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    .table td, .table th {
+    padding: 0.2rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+</style>
 
 <body style="background-color:white">
     <?php
@@ -53,12 +60,12 @@ include 'dbconfig.php'
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Fullname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Course</th>
-                    <th scope="col" style="text-align: center ; width: 180px;">Manage</th>
+                    <th scope="col"  style="padding: 0.75rem;">ID</th>
+                    <th scope="col"  style="padding: 0.75rem;">Fullname</th>
+                    <th scope="col"  style="padding: 0.75rem;">Email</th>
+                    <th scope="col"  style="padding: 0.75rem;">Phone</th>
+                    <th scope="col"  style="padding: 0.75rem;">Course</th>
+                    <th scope="col" style="text-align: center ; width: 180px;padding: 0.75rem;">Manage</th>
                 </tr>
             </thead>
             <tbody>
@@ -124,19 +131,15 @@ include 'dbconfig.php'
                         <td>' . $course . '</td>
                         <td align="center" width="180px;">
                             <div>
-                                <button type="button" class="btn btn-info"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
-                                <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                                <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                             </div>
                         </td>
                     </tr>';
                             }
                         }
-                        if ($_POST['search']==""){
-                            echo "<script>alert('No Data Found');</script>";
-                        }
                         else{
                             echo "<script>alert('No Data Found');</script>";
-                            header("Refresh:0");
                         }
                     }
                 } else if (isset($_GET['db'])) {
@@ -170,8 +173,8 @@ include 'dbconfig.php'
                     <td>' . $course . '</td>
                     <td align="center" width="180px;">
                         <div>
-                            <button type="button" class="btn btn-info"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
-                            <button type="button" class="btn btn-danger" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                         </div>
                     </td>
                 </tr>';

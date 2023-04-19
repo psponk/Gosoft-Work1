@@ -15,11 +15,11 @@ include 'dbconfig.php'
 </head>
 
 <style>
-    .table thead th {
-        vertical-align: middle;
-        padding: 5px;
-        margin: 5px;
-    }
+    .table td, .table th {
+    padding: 0rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
 </style>
 
 <body>
@@ -48,7 +48,7 @@ include 'dbconfig.php'
                 <thead class="thead-dark" style="padding : 8px ; margin: 10px">
                     <tr>
                         <th>
-                            <button type="submit" name="delete_multiple_btn" class="btn btn-danger">Delete</button>
+                            <button type="submit" name="delete_multiple_btn" class="btn btn-danger btn-sm" style="margin-right: 10px">Delete</button>
                         </th>
                         <th>ID</th>
                         <th>Fullname</th>
