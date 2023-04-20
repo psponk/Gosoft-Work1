@@ -12,7 +12,10 @@ include 'dbconfig.php'
     <title>View</title>
     <link href="style.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='node_modules\css.gg\icons\all.css' rel='stylesheet'>
+
 </head>
+
 <style>
     .table td, .table th {
     padding: 0.2rem;
@@ -57,7 +60,7 @@ include 'dbconfig.php'
     </ul>
 
     <div style="overflow-x:auto;">
-        <table class="table">
+        <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col"  style="padding: 0.75rem;">ID</th>
@@ -72,19 +75,21 @@ include 'dbconfig.php'
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
                     <div class="row">
                         <div class="col-md-4">
-                            <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold">Choose Database</p>
+                            <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
                             <form method="GET" style="display: inline-block;">
                                 <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
-                                    <option value="">Select Database</option>
+                                    <option value="" disabled selected>Select Databases</option>
                                     <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                                     <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
                                     <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
                                 </select>
+                                <i class="gg-database" style ="display:inline-block"></i>
                             </form>
                         </div>
                         <div class="col-md-4">
                             <form method="post">
                                 <div class="input-group">
+                                    <i class="gg-search" style="margin: 35px 10px 0px 0px"></i>
                                     <input name="search" type="text" class="form-control" placeholder="Search data" style="margin-top: 25px">
                                     <div class="input-group-append">
                                         <button class="btn btn-dark btn-sm" style="margin-top: 25px" name="submit">Search</button>
@@ -131,7 +136,7 @@ include 'dbconfig.php'
                         <td>' . $course . '</td>
                         <td align="center" width="180px;">
                             <div>
-                                <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                                <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Edit</a></button>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                             </div>
                         </td>
@@ -173,13 +178,16 @@ include 'dbconfig.php'
                     <td>' . $course . '</td>
                     <td align="center" width="180px;">
                         <div>
-                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Update</a></button>
+                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Edit</a></button>
                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                         </div>
                     </td>
                 </tr>';
                         }
                     }
+                else{
+                    echo "No data found";
+                }
                 }
                 ?>
             </tbody>

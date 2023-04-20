@@ -11,8 +11,8 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <style>
-    .head{
-        color:#de152c;
+    .head {
+        color: #de152c;
         font-size: 50px;
         font-weight: bold;
         font-family: myFirstFont;
@@ -21,37 +21,39 @@
         text-shadow: 1px 1px 8px #323336;
     }
 
-    .container{
+    .container {
         width: 500px;
         height: 500px;
     }
 
-    .inside-container{
+    .inside-container {
         max-width: 400px;
         /* border-style: solid; */
         margin: 40px 40px 40px 40px;
 
     }
 
-    .name{
+    .name {
         font-size: 20px;
         float: left;
         padding-right: 0px;
-        margin-right : 0px;
+        margin-right: 0px;
     }
-    a{
-        color : white;
-        
-    }
-    a:hover {
-        color : #ffffff;
-    }
-    @media (max-width: 850px) { 
-    .head{
-        font-size : 5vw; 
-    }
-}
 
+    a {
+        color: white;
+
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+
+    @media (max-width: 850px) {
+        .head {
+            font-size: 5vw;
+        }
+    }
 </style>
 
 <body style="background-color:white">
@@ -65,6 +67,20 @@
 
     <h1 class="head">Asset Management system</h1>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
+    <h1 style="text-align:center">All Available Asset</h1>
+    <div class="container" style="height:400px">
+        <div class="row" style="text-align:center">
+            <div class="col-md-4">
+                box 1
+            </div>
+            <div class="col-md-4">
+                box 3
+            </div>
+            <div class="col-md-4">
+                box 2
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="inside-container">
             <p class="name">
@@ -100,7 +116,7 @@
                 </a>
             </button>
         </div>
-        
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
