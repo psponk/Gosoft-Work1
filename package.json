@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@popperjs/core": "^2.11.7",
     "css.gg": "^2.0.0"
   }
 }

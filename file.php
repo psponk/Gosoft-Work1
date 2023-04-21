@@ -99,7 +99,7 @@
                                 <p style="Text-align:left ;margin-bottom: 0px ; margin-top:10px  ; font-weight : bold">File Type</p>
                                 <i class="gg-file-document" style="display:inline-block ;margin: 12px 0px 0px 10px"></i>
                             </div>
-                            <select name="export_file_document" class="form-control enctype=" multipart/form-data>
+                            <select name="export_file_type" class="form-control enctype=" multipart/form-data>
                                 <option value="xlsx">XLSX</option>
                                 <option value="xls">XLS</option>
                                 <option value="csv">CSV</option>

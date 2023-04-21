@@ -68,56 +68,55 @@
     <h1 class="head">Asset Management system</h1>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
     <h1 style="text-align:center">All Available Asset</h1>
-    <div class="container" style="height:400px">
+    <div class="container" style="height:200px">
         <div class="row" style="text-align:center">
             <div class="col-md-4">
                 box 1
             </div>
             <div class="col-md-4">
-                box 3
-            </div>
-            <div class="col-md-4">
                 box 2
             </div>
+            <div class="col-md-4">
+                box 3
+            </div>
         </div>
     </div>
-    <div class="container">
-        <div class="inside-container">
-            <p class="name">
-                Import File
-            </p>
-            <button class="btn btn-danger" style="display:block ;float:right">
-                <a href="file.php">
-                    Import
-                </a>
-            </button>
-            <br>
-        </div>
+            <div class="row" style="justify-content: center;align-items: center;">
 
-        <div class="inside-container">
-            <p class="name">
-                Export File
-            </p>
-            <button class="btn btn-danger" style="display:block ; float:right">
-                <a href="file.php">
-                    Export
-                </a>
-            </button>
-            <br>
-        </div>
+                <div class="container col-4"> 
+                <h1 style="text-align:center">
+                    Export File
+                </h1>
+                <button class="btn btn-danger" style="margin-left:42%;">
+                    <a href="file.php">
+                        Export
+                    </a>
+                </button>
 
-        <div class="inside-container">
-            <p class="name">
-                View table
-            </p>
-            <button class="btn btn-danger" style="display:block ;float:right">
-                <a href="view.php">
-                    View
-                </a>
-            </button>
-        </div>
+                </div>
 
-    </div>
+                <div class="container col-4"> 
+                <h1 style="text-align:center">
+                    Import file
+                </h1>
+                <button class="btn btn-danger"  style="margin-left:42%;">
+                    <a href="file.php">
+                        import
+                    </a>
+                </button>
+                </div>
+
+                <div class="container col-4"> 
+                <h1 style="text-align:center">
+                    View table
+                </h1>
+                <button class="btn btn-danger"  style="margin-left:42%;">
+                    <a href="view.php">
+                        View
+                    </a>
+                </button>
+                </div>
+        </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

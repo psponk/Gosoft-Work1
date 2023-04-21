@@ -18,7 +18,7 @@ include 'dbconfig.php'
 <style>
     .form-control {
         display: inline-block;
-        max-width: 200px
+        max-width: 200px;
     }
 </style>
 

@@ -34,30 +34,29 @@ include 'dbconfig.php'
         <link href='node_modules\css.gg\icons\all.css' rel='stylesheet'>
     </ul>
     <div style="overflow-x:auto;">
-        <table class="table table-hover" ;>
+        <table class="table table-hover table-striped" ;>
             <thead class="thead-dark">
                 <tr>
                     <th scope="col" style="padding: 0.75rem; " font-family:Times New Roman""></th>
-                    <th scope="col" style="padding: 0.75rem;">ID</th>
-                    <th scope="col" style="padding: 0.75rem;">Fullname</th>
-                    <th scope="col" style="padding: 0.75rem;">Email</th>
-                    <th scope="col" style="padding: 0.75rem;">Phone</th>
-                    <th scope="col" style="padding: 0.75rem;">Course</th>
+                    <th scope="col"  style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
+                    <th scope="col"  style="padding: 0.75rem; width: 350px">Fullname</th>
+                    <th scope="col"  style="padding: 0.75rem; width: 350px">Email</th>
+                    <th scope="col"  style="padding: 0.75rem; width: 350px">Phone</th>
+                    <th scope="col"  style="padding: 0.75rem; width: 350px">Course</th>
                 </tr>
             </thead>
             <tbody>
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
                     <div class="row">
                         <div class="col-md-4">
-                            <p style="Text-align:left ;margin-bottom: 0px; font-weight : bold">Choose Database</p>
+                        <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
                             <form method="GET" style="display: inline-block;">
                                 <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 10px ;max-width: 150px; display: inline-block;">
-                                    <option value="">Select Database</option>
+                                    <option value="" disabled selected>Select Databases</option>
                                     <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                                     <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
                                     <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
                                 </select>
-                                <i class="gg-database" style ="display:inline-block"></i>
                             </form>
                         </div>
                         <div class="col-md-4">
