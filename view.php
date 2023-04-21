@@ -25,12 +25,13 @@ include 'dbconfig.php'
 </head>
 
 <style>
-    .table td, .table th {
-    padding: 0.2rem;
-    vertical-align: middle;
-    border-top: 1px solid #dee2e6;
-}
-class
+    .table td,
+    .table th {
+        padding: 0.2rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+    }
+
 </style>
 
 <body style="background-color:white">
@@ -60,23 +61,38 @@ class
             }
         }
     </script>
+
     <!-- navbar -->
     <ul>
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
         <li><a href="file.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li style="float:right"><a href="index.php">Asset Management</a></li>
+        <div style="float:right">
+            <li><a href="view.php">View</a></li>
+            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="file.php">Export</a>
+                <a class="dropdown-item" href="file.php">Import</a>
+                <a class="dropdown-item" href="view.php">View</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.php">Home</a>
+            </div>
+        </div>
+
     </ul>
 
     <div style="overflow-x:auto;">
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col"  style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 300px">Fullname</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 300px">Email</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 300px">Phone</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 300px">Course</th>
+                    <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
+                    <th scope="col" style="padding: 0.75rem; width: 300px">Fullname</th>
+                    <th scope="col" style="padding: 0.75rem; width: 300px">Email</th>
+                    <th scope="col" style="padding: 0.75rem; width: 300px">Phone</th>
+                    <th scope="col" style="padding: 0.75rem; width: 300px">Course</th>
                     <th scope="col" style="text-align: center ; width: 180px;padding: 0.75rem;">Manage</th>
                 </tr>
             </thead>
@@ -134,7 +150,7 @@ class
                     $con = mysqli_connect($servername, $username, $password, $dbname);
                     $result = mysqli_query($con, $sql);
                     if ($result) {
-                        if (mysqli_num_rows($result)>0) {
+                        if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id = $row['id'];
                                 $fullname = $row['fullname'];
@@ -143,7 +159,7 @@ class
                                 $course = $row['course'];
                                 echo '
                     <tr>
-                        <th scope="row" style="text-align:center;">' . $id . '</th>
+                        <td>' . $id . '</td>
                         <td>' . $fullname . '</td>
                         <td>' . $email . '</td>
                         <td>' . $phone . '</td>
@@ -156,8 +172,7 @@ class
                         </td>
                     </tr>';
                             }
-                        }
-                        else{
+                        } else {
                             echo "<script>alert('No Data Found');</script>";
                         }
                     }
@@ -198,10 +213,9 @@ class
                     </td>
                 </tr>';
                         }
+                    } else {
+                        echo "No data found";
                     }
-                else{
-                    echo "No data found";
-                }
                 }
                 ?>
             </tbody>

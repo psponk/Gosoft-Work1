@@ -13,12 +13,24 @@ include 'dbconfig.php'
     <title>Manage</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href='node_modules\css.gg\icons\all.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <style>
     .form-control {
-        display: inline-block;
         max-width: 200px;
+    }
+
+    p {
+        margin: 0 0 0 0;
     }
 </style>
 
@@ -28,7 +40,20 @@ include 'dbconfig.php'
         <li><a href=""><img src="logo.jpg" class="pic"></a></li>
         <li><a href="file.php">file</a></li>
         <li><a href="view.php">view</a></li>
-        <li style="float:right"><a href="index.php">Asset Management</a></li>
+        <div style="float:right">
+            <li><a href="add.php">Add</a></li>
+            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="file.php">Export</a>
+                <a class="dropdown-item" href="file.php">Import</a>
+                <a class="dropdown-item" href="view.php">View</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.php">Home</a>
+            </div>
+        </div>
     </ul>
 
     <center style="margin-top: 5%;">
@@ -40,41 +65,45 @@ include 'dbconfig.php'
             </div>
             <div class="card-body text-center">
                 <form method="GET" style="display: inline-block;">
-                    <p style= "display: inline-block;">
+                    <p style="display: inline-block;">
                         <label for="fullname">Select Database:</label>
-                    <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
-                        <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
-                        <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
-                        <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
-                    </select>
+                        <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
+                            <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
+                            <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
+                            <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
+                        </select>
                     </p>
                 </form>
                 <form name="add_data" action="add.php?db=<?php echo $_GET['db'] ?>" method="post">
-                    <p>
-                        <label for="fullname">fullname:</label>
-                        <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername">
-
-                    </p>
-
-
-                    <p>
-                        <label for="email">email:</label>
-                        <input type="text" name="email" id="email" class="form-control">
-                    </p>
+                    <center>
+                        <div>
+                            <p>fullname</p>
+                            <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                        </div>
 
 
-                    <p>
-                        <label for="phoner">phone:</label>
-                        <input type="text" name="phone" id="phone" class="form-control">
-                    </p>
+
+                        <div>
+                            <p>email</p>
+                            <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+
+                        </div>
 
 
-                    <p>
-                        <label for="course">course:</label>
-                        <input type="text" name="course" id="course" class="form-control">
-                    </p>
 
-                    <button name="add_data" type="submit" class="btn btn-success">Submit</button>
+                        <div>
+                            <p>phone</p>
+                            <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                        </div>
+
+                        <div>
+                            <p>course</p>
+                            <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+
+                        </div>
+                    </center>
+
+                    <button name="add_data" type="submit" class="btn btn-success" style="margin-top: 15px">Submit</button>
 
                 </form>
             </div>
