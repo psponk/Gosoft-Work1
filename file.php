@@ -20,6 +20,11 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+    .card {
+    border-radius: 20px;
+}
+</style>
 
 <body style="background-color:white">
     <!-- navbar -->

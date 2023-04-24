@@ -84,7 +84,9 @@
         <li><a href="view.php">view</a></li>
         <div style="float:right">
             <li><a href="index.php">Asset Management</a></li>
-            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="height:52px ; margin:0 0 0 0" type="button"
+                class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">

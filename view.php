@@ -22,6 +22,9 @@ include 'dbconfig.php'
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <style>
@@ -31,7 +34,6 @@ include 'dbconfig.php'
         vertical-align: middle;
         border-top: 1px solid #dee2e6;
     }
-
 </style>
 
 <body style="background-color:white">
@@ -84,10 +86,10 @@ include 'dbconfig.php'
 
     </ul>
 
-    <div style="overflow-x:auto;">
-        <table class="table table-hover table-striped">
-            <thead class="thead-dark">
-                <tr>
+    <div class="container" style="padding-top: 10px">
+        <table id="myTable" class="table table-hover table-striped">
+            <thead class="bg-danger">
+                <tr style="color:white;">
                     <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
                     <th scope="col" style="padding: 0.75rem; width: 300px">Fullname</th>
                     <th scope="col" style="padding: 0.75rem; width: 300px">Email</th>
@@ -221,5 +223,12 @@ include 'dbconfig.php'
             </tbody>
         </table>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 
 </body>
+
+</html>
