@@ -102,7 +102,7 @@ include 'dbconfig.php'
                         <div class="col-md-4">
                             <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
                             <form method="GET" style="display: inline-block;">
-                                <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
+                                <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 160px; display: inline-block;">
                                     <option value="" disabled selected>Select Databases</option>
                                     <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                                     <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
@@ -159,7 +159,7 @@ include 'dbconfig.php'
                                 $course = $row['course'];
                                 echo '
                     <tr>
-                        <td>' . $id . '</td>
+                        <td style="text-align:center; font-weight : bold">' . $id . '</td>
                         <td>' . $fullname . '</td>
                         <td>' . $email . '</td>
                         <td>' . $phone . '</td>
