@@ -30,7 +30,7 @@ include 'dbconfig.php'
     }
 
     p {
-        margin: 0 0 0 0;
+        margin: 0px 0px 0px 0px;
     }
 </style>
 
@@ -46,7 +46,7 @@ include 'dbconfig.php'
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
                 <a class="dropdown-item" href="file.php">Export</a>
                 <a class="dropdown-item" href="file.php">Import</a>
                 <a class="dropdown-item" href="view.php">View</a>
@@ -59,7 +59,7 @@ include 'dbconfig.php'
     <center style="margin-top: 5%;">
 
 
-        <div class="card" style="max-width: 500px">
+        <div class="card" style="max-width: 500px ;border-radius: 1rem;">
             <div class="card-header" style="background-color:#940d03">
                 <h1 style='color: white'>Add data to <?php echo $_GET['db'] ?></h1>
             </div>

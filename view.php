@@ -75,7 +75,7 @@ include 'dbconfig.php'
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
                 <a class="dropdown-item" href="file.php">Export</a>
                 <a class="dropdown-item" href="file.php">Import</a>
                 <a class="dropdown-item" href="view.php">View</a>
@@ -126,40 +126,88 @@ include 'dbconfig.php'
                         <div class="col-md-4">
                             <?php if (isset($_GET['db'])) : ?>
                                 <div role="group">
-                                    <button class="btn btn-dark" style="margin-top: 25px; float: right;">
-                                        <a href="addpage.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Add Data</a>
+
+                                    <button class="btn btn-dark" style="margin-top: 25px; float: right;" data-toggle="modal" data-target="#myModal">
+                                        Add Data
                                     </button>
-                                    <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; ">
-                                        <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
-                                    </button>
+
+                                    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content" style="border-radius: 20px">
+                                                <div class="modal-header" style="background-color:#de152c ;border-radius: 20px 20px 0px 0px ;color:white">
+                                                    <h5 class="modal-title">Add Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form name="add_data" action="add.php?db=<?php echo $_GET['db'] ?>" method="post">
+                                                        <center?>
+                                                            <div>
+                                                                <p>fullname</p>
+                                                                <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                            </div>
+
+                                                            <div>
+                                                                <p>email</p>
+                                                                <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+
+                                                            </div>
+
+                                                            <div>
+                                                                <p>phone</p>
+                                                                <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                            </div>
+
+                                                            <div>
+                                                                <p>course</p>
+                                                                <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+
+                                                            </div>
+                                                            </center>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button name="add_data" type="submit" class="btn btn-success" style="margin-top: 15px">Submit</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            <?php endif; ?>
+
+
+                                <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; ">
+                                    <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
+                                </button>
                         </div>
+                    <?php endif; ?>
                     </div>
                 </div>
+    </div>
 
-                <!-- search bar -->
-                <?php
-                if (isset($_POST['submit'])) {
-                    $db = $_GET['db'];
-                    $search = $_POST['search'];
-                    $sql = "Select * from `students` where id like '%$search%' or fullname like '%$search%' or email like '%$search%' or phone like '%$search%' or course like '%$search%'";
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = $db;
+    <!-- search bar -->
+    <?php
+    if (isset($_POST['submit'])) {
+        $db = $_GET['db'];
+        $search = $_POST['search'];
+        $sql = "Select * from `students` where id like '%$search%' or fullname like '%$search%' or email like '%$search%' or phone like '%$search%' or course like '%$search%'";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = $db;
 
-                    $con = mysqli_connect($servername, $username, $password, $dbname);
-                    $result = mysqli_query($con, $sql);
-                    if ($result) {
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $id = $row['id'];
-                                $fullname = $row['fullname'];
-                                $email = $row['email'];
-                                $phone = $row['phone'];
-                                $course = $row['course'];
-                                echo '
+        $con = mysqli_connect($servername, $username, $password, $dbname);
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['id'];
+                    $fullname = $row['fullname'];
+                    $email = $row['email'];
+                    $phone = $row['phone'];
+                    $course = $row['course'];
+                    echo '
                     <tr>
                         <td style="text-align:center; font-weight : bold">' . $id . '</td>
                         <td>' . $fullname . '</td>
@@ -173,34 +221,34 @@ include 'dbconfig.php'
                             </div>
                         </td>
                     </tr>';
-                            }
-                        } else {
-                            echo "<script>alert('No Data Found');</script>";
-                        }
-                    }
-                } else if (isset($_GET['db'])) {
-                    $db = $_GET['db'];
-                    // Connect to the database
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = $db;
+                }
+            } else {
+                echo "<script>alert('No Data Found');</script>";
+            }
+        }
+    } else if (isset($_GET['db'])) {
+        $db = $_GET['db'];
+        // Connect to the database
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = $db;
 
-                    $con = mysqli_connect($servername, $username, $password, $dbname);
-                    if (!$con) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
+        $con = mysqli_connect($servername, $username, $password, $dbname);
+        if (!$con) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-                    $sql = "SELECT * FROM students";
-                    $result = mysqli_query($con, $sql);
-                    if ($result) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $id = $row['id'];
-                            $fullname = $row['fullname'];
-                            $email = $row['email'];
-                            $phone = $row['phone'];
-                            $course = $row['course'];
-                            echo '
+        $sql = "SELECT * FROM students";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                $fullname = $row['fullname'];
+                $email = $row['email'];
+                $phone = $row['phone'];
+                $course = $row['course'];
+                echo '
                 <tr>
                     <th scope="row" style="text-align:center;">' . $id . '</th>
                     <td>' . $fullname . '</td>
@@ -214,14 +262,14 @@ include 'dbconfig.php'
                         </div>
                     </td>
                 </tr>';
-                        }
-                    } else {
-                        echo "No data found";
-                    }
-                }
-                ?>
-            </tbody>
-        </table>
+            }
+        } else {
+            echo "No data found";
+        }
+    }
+    ?>
+    </tbody>
+    </table>
     </div>
     <script>
         $(document).ready(function() {

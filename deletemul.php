@@ -25,7 +25,6 @@ include 'dbconfig.php'
 </head>
 
 <style>
-    .table td,
     .table th {
         padding: 0.2rem;
         vertical-align: middle;
@@ -45,7 +44,7 @@ include 'dbconfig.php'
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
                 <a class="dropdown-item" href="file.php">Export</a>
                 <a class="dropdown-item" href="file.php">Import</a>
                 <a class="dropdown-item" href="view.php">View</a>
@@ -54,10 +53,10 @@ include 'dbconfig.php'
             </div>
         </div>
     </ul>
-    <div style="overflow-x:auto;">
+    <div class = "container">
         <table class="table table-hover table-striped" ;>
-            <thead class="thead-dark">
-                <tr>
+            <thead class="bg-danger">
+                <tr style="color:white">
                     <th scope="col" style="padding: 0.75rem; " font-family:Times New Roman""></th>
                     <th scope="col"  style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
                     <th scope="col"  style="padding: 0.75rem; width: 350px">Fullname</th>

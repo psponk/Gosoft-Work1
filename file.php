@@ -38,7 +38,7 @@
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
                 <a class="dropdown-item" href="file.php">Export</a>
                 <a class="dropdown-item" href="file.php">Import</a>
                 <a class="dropdown-item" href="view.php">View</a>

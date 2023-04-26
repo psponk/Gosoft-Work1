@@ -112,10 +112,8 @@ if(isset($_POST['save_excel_data']))
                 $email = $row['1'];
                 $phone = $row['2'];
                 $course = $row['3'];
-
                 $studentQuery = "INSERT INTO students (fullname,email,phone,course) VALUES ('$fullname','$email','$phone','$course')";
                 $result = mysqli_query($con, $studentQuery);
-                
                 $msg = true;
             }
             else

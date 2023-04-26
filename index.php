@@ -85,12 +85,11 @@
         <div style="float:right">
             <li><a href="index.php">Asset Management</a></li>
             <button style="height:52px ; margin:0 0 0 0" type="button"
-                class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+                class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students.php">Add</a>
+                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
                 <a class="dropdown-item" href="file.php">Export</a>
                 <a class="dropdown-item" href="file.php">Import</a>
                 <a class="dropdown-item" href="view.php">View</a>

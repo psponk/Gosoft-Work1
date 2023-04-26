@@ -16,10 +16,10 @@ include 'dbconfig.php'
 </head>
 
 <style>
-.form-control {
-    display: inline-block;
-    max-width: 200px
-}
+    .form-control {
+        display: inline-block;
+        max-width: 200px
+    }
 </style>
 
 <body style="background-color:white">
@@ -40,35 +40,34 @@ include 'dbconfig.php'
             </div>
             <div class="card-body text-center">
                 <form name="update_data" action="update.php?db=<?php echo $_GET['db'] ?>&id=<?php echo $_GET['id'] ?>" method="post">
-                    <p>
-                        <label for="fullname">fullname:</label>
-                        <input type="text" name="fullname" id="fullname" class="form-control" placeholder="<?php echo $_GET['fullname'] ?>">
-                        
-                    </p>
+                    <div>
+                        <p>fullname</p>
+                        <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['fullname'] ?>">
+                    </div>
 
 
-                    <p>
-                        <label for="email">email:</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="<?php echo $_GET['email'] ?>">
-                    </p>
+
+                    <div>
+                        <p>email</p>
+                        <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['email'] ?>">
+
+                    </div>
 
 
-                    <p>
-                        <label for="phoner">phone:</label>
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="<?php echo $_GET['phone'] ?>">
-                    </p>
 
+                    <div>
+                        <p>phone</p>
+                        <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['phone'] ?>">
+                    </div>
 
-                    <p>
-                        <label for="course">course:</label>
-                        <input type="text" name="course" id="course" class="form-control" placeholder="<?php echo $_GET['course'] ?>">
-                    </p>
-
-                    <button name="update_data" type="submit" class="btn btn-success">Submit</button>
+                    <div>
+                        <p>course</p>
+                        <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['course'] ?>">
+                    </div>
+                    <button name="update_data" type="submit" class="btn btn-success" style="margin-top:10px">Submit</button>
 
                 </form>
             </div>
-</div>
     </center>
 </body>
 

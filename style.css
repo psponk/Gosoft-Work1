@@ -65,6 +65,7 @@ li a:hover:not(.active) {
     padding: 8px 8px;
     font-size: 2.5vw;
   }
+
 }
 
 .active {
@@ -153,3 +154,40 @@ h4 {
   top: 0;
   left: -4px;
 }
+
+.modal-header{
+  background-color: #de152c;
+}
+
+a.button1{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+  }
+  a.button1:hover{
+   color:#000000;
+   background-color:#FFFFFF;
+  }
+
+  @media all and (max-width:30em){
+  a.button1{
+  display:block;
+  margin:0.4em auto;
+  }
+  }
+
+  @media (max-width: 768px) {
+    .dropdown-toggle-split {
+      height: auto;
+      padding: 6px 12px;
+    }
+  }
