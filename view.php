@@ -102,13 +102,17 @@ include 'dbconfig.php'
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
                     <div class="row">
                         <div class="col-md-4">
-                            <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
+                            <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">
+                                Choose Database</p>
                             <form method="GET" style="display: inline-block;">
                                 <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 160px; display: inline-block;">
                                     <option value="" disabled selected>Select Databases</option>
-                                    <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
-                                    <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
-                                    <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss') echo 'selected'; ?>>studentsss</option>
+                                    <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students')
+                                                                    echo 'selected'; ?>>students</option>
+                                    <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss')
+                                                                    echo 'selected'; ?>>studentss</option>
+                                    <option value="studentsss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentsss')
+                                                                    echo 'selected'; ?>>studentsss</option>
                                 </select>
                             </form>
                         </div>
