@@ -33,7 +33,22 @@ include 'dbconfig.php'
         padding: 0.2rem;
         vertical-align: middle;
         border-top: 1px solid #dee2e6;
+        width: 300px;
     }
+
+    @media screen and (max-width: 768px) {
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        a{
+            font-size:5px
+        }
+    }
+
+    
+    
 </style>
 
 <body style="background-color:white">
@@ -65,36 +80,54 @@ include 'dbconfig.php'
     </script>
 
     <!-- navbar -->
-    <ul>
-        <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="file.php">file</a></li>
-        <li><a href="view.php">view</a></li>
-        <div style="float:right">
-            <li><a href="view.php">View</a></li>
-            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
-                <a class="dropdown-item" href="file.php">Export</a>
-                <a class="dropdown-item" href="file.php">Import</a>
-                <a class="dropdown-item" href="view.php">View</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.php">Home</a>
-            </div>
-        </div>
 
-    </ul>
+    <nav class="navbar navbar-light" style="background-color: #ffff;">
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="nav1">
+            <ul class="navbar-nav mr-auto" style="color:red">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="file.php">File</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="view.php">View</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="addpage.php?db=students">students</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="deletemul.php?db=students">students</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="deletemul.php?db=students">studentsss</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 
     <div class="container" style="padding-top: 10px">
         <table id="myTable" class="table table-hover table-striped">
             <thead class="bg-danger">
                 <tr style="color:white;">
                     <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
-                    <th scope="col" style="padding: 0.75rem; width: 300px">Fullname</th>
-                    <th scope="col" style="padding: 0.75rem; width: 300px">Email</th>
-                    <th scope="col" style="padding: 0.75rem; width: 300px">Phone</th>
-                    <th scope="col" style="padding: 0.75rem; width: 300px">Course</th>
+                    <th scope="col" style="padding: 0.75rem;">Fullname</th>
+                    <th scope="col" style="padding: 0.75rem;">Email</th>
+                    <th scope="col" style="padding: 0.75rem;">Phone</th>
+                    <th scope="col" style="padding: 0.75rem;">Course</th>
                     <th scope="col" style="text-align: center ; width: 180px;padding: 0.75rem;">Manage</th>
                 </tr>
             </thead>

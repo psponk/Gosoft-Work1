@@ -28,25 +28,42 @@
 
 <body style="background-color:white">
     <!-- navbar -->
-    <ul>
-        <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="file.php">file</a></li>
-        <li><a href="view.php">view</a></li>
-        <div style="float:right">
-            <li><a href="file.php">File</a></li>
-            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
-                <a class="dropdown-item" href="file.php">Export</a>
-                <a class="dropdown-item" href="file.php">Import</a>
-                <a class="dropdown-item" href="view.php">View</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.php">Home</a>
-            </div>
+    <nav class="navbar navbar-light" style="background-color: #ffff;">
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="nav1">
+            <ul class="navbar-nav mr-auto" style="color:red">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="file.php">File</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="view.php">View</a>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="addpage.php?db=students">students</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="deletemul.php?db=students">students</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </ul>
+    </nav>
 
     <!-- main import export part -->
     <div class="container" style="max-width: 800px; margin-top:8%">

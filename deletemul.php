@@ -30,46 +30,73 @@ include 'dbconfig.php'
         vertical-align: middle;
         border-top: 1px solid #dee2e6;
     }
+
+    @media screen and (max-width: 768px) {
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    }
 </style>
 
 <body>
     <!-- navbar -->
-    <ul>
-        <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="file.php">file</a></li>
-        <li><a href="view.php">view</a></li>
-        <div style="float:right">
-            <li><a href="deletemul.php">Delete</a></li>
-            <button style="height:52px ; margin:0 0 0 0" type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
-                <a class="dropdown-item" href="file.php">Export</a>
-                <a class="dropdown-item" href="file.php">Import</a>
-                <a class="dropdown-item" href="view.php">View</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.php">Home</a>
-            </div>
+    <nav class="navbar navbar-light" style="background-color: #ffff;">
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="nav1">
+            <ul class="navbar-nav mr-auto" style="color:red">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="file.php">File</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="view.php">View</a>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="addpage.php?db=students">students</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="deletemul.php?db=students">students</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </ul>
-    <div class = "container">
+    </nav>
+
+    
+    <div class="container">
         <table class="table table-hover table-striped" ;>
             <thead class="bg-danger">
                 <tr style="color:white">
                     <th scope="col" style="padding: 0.75rem; " font-family:Times New Roman""></th>
-                    <th scope="col"  style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 350px">Fullname</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 350px">Email</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 350px">Phone</th>
-                    <th scope="col"  style="padding: 0.75rem; width: 350px">Course</th>
+                    <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">Fullname</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">Email</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">Phone</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">Course</th>
                 </tr>
             </thead>
             <tbody>
                 <div class='container' style="padding-top: 0px; max-width: 100%;margin-left:0px">
                     <div class="row">
                         <div class="col-md-4">
-                        <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
+                            <p style="Text-align:left ;margin-bottom: 0px;padding-bottom: 0px; font-weight : bold ;margin-left: 5px">Choose Database</p>
                             <form method="GET" style="display: inline-block;">
                                 <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 10px ;max-width: 150px; display: inline-block;">
                                     <option value="" disabled selected>Select Databases</option>
@@ -121,7 +148,7 @@ include 'dbconfig.php'
                     if ($result) {
                         if (mysqli_num_rows($result) > 0) {
                             foreach ($result as $row) {
-                        ?>
+                ?>
                                 <tr>
                                     <td style="width:10px; text-align: center;">
                                         <input type="checkbox" name="delete_id[]" value="<?= $row['id']; ?>">
@@ -152,50 +179,48 @@ include 'dbconfig.php'
                         <?php
                         }
                     }
-                }
-                        
-                else{
-                $db = $_GET['db'];
-                $con = mysqli_connect("localhost", "root", "", $db);
-
-                $query = "SELECT * FROM students";
-                $query_run = mysqli_query($con, $query);
-
-                if (mysqli_num_rows($query_run) > 0) {
-                    foreach ($query_run as $row) {
-                ?>
-                        <tr>
-                            <td style="width:10px; text-align: center;">
-                                <input type="checkbox" name="delete_id[]" value="<?= $row['id']; ?>">
-                            </td>
-                            <th>
-                                <?= $row['id']; ?>
-                            </th>
-                            <td>
-                                <?= $row['fullname']; ?>
-                            </td>
-                            <td>
-                                <?= $row['email']; ?>
-                            </td>
-                            <td>
-                                <?= $row['phone']; ?>
-                            </td>
-                            <td>
-                                <?= $row['course']; ?>
-                            </td>
-                        </tr>
-                    <?php
-                    }
                 } else {
-                    ?>
-                    <tr>
-                        <td colspan="5">No Record Found</td>
-                    </tr>
+                    $db = $_GET['db'];
+                    $con = mysqli_connect("localhost", "root", "", $db);
+
+                    $query = "SELECT * FROM students";
+                    $query_run = mysqli_query($con, $query);
+
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $row) {
+                        ?>
+                            <tr>
+                                <td style="width:10px; text-align: center;">
+                                    <input type="checkbox" name="delete_id[]" value="<?= $row['id']; ?>">
+                                </td>
+                                <th>
+                                    <?= $row['id']; ?>
+                                </th>
+                                <td>
+                                    <?= $row['fullname']; ?>
+                                </td>
+                                <td>
+                                    <?= $row['email']; ?>
+                                </td>
+                                <td>
+                                    <?= $row['phone']; ?>
+                                </td>
+                                <td>
+                                    <?= $row['course']; ?>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <tr>
+                            <td colspan="5">No Record Found</td>
+                        </tr>
                 <?php
+                    }
                 }
-            }
                 ?>
-                
+
             </tbody>
         </table>
         </form>

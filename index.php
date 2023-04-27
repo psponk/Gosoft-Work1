@@ -23,13 +23,13 @@
 </head>
 <style>
     .head {
-        color: #de152c;
+        color: #ffffff;
         font-size: 50px;
         font-weight: bold;
         font-family: myFirstFont;
         text-align: center;
         margin-top: 50px;
-        text-shadow: 1px 1px 8px #323336;
+        text-shadow: 1px 1px 8px #000000;
     }
 
     .body {
@@ -74,32 +74,60 @@
             font-size: 5vw;
         }
     }
+
+    .page-footer {
+        background-color: #ad2828;
+        text-align: center;
+        color: white;
+        margin: 0 0 0 0;
+        height: 30px;
+    }
 </style>
 
 <body>
     <!-- navbar -->
-    <ul>
-        <li><a href=""><img src="logo.jpg" class="pic"></a></li>
-        <li><a href="file.php">file</a></li>
-        <li><a href="view.php">view</a></li>
-        <div style="float:right">
-            <li><a href="index.php">Asset Management</a></li>
-            <button style="height:52px ; margin:0 0 0 0" type="button"
-                class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="addpage.php?db=students">Add</a>
-                <a class="dropdown-item" href="file.php">Export</a>
-                <a class="dropdown-item" href="file.php">Import</a>
-                <a class="dropdown-item" href="view.php">View</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.php">Home</a>
-            </div>
-        </div>
-    </ul>
+    <nav class="navbar navbar-light" style="background-color: #ffff;">
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <h1 class="head">Asset Management system</h1>
+        <div class="navbar-collapse collapse" id="nav1">
+            <ul class="navbar-nav mr-auto" style="color:red">
+                <li class="nav-item">
+                    <a class="nav-link  disabled" href="index.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="file.php">File</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="view.php">View</a>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="addpage.php?db=students">students</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="addpage.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Delete</a>
+                    <div class="dropdown-menu" aria-labelledby="Add">
+                        <a class="dropdown-item" href="deletemul.php?db=students">students</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentss">studentss</a>
+                        <a class="dropdown-item" href="deletemul.php?db=studentsss">studentsss</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    
+    <div class="jumbotron jumbotron-fluid" style="background-color:#ad2828">
+        <h1 class="head" style="margin: 0 0 0 0;">Asset Management system</h1>
+    </div>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
     <h1 style="text-align:center">All Available Asset</h1>
     <div class="container" style="height:200px">
@@ -115,42 +143,41 @@
             </div>
         </div>
     </div>
-    <div class="row" style="justify-content: center;align-items: center;">
+    <div class="row d-flex justify-content-center align-items-center">
 
-        <div class="container col-4">
-            <h1 style="text-align:center">
-                Export File
-            </h1>
-            <button class="btn btn-danger" style="margin-left:42%;">
-                <a href="file.php">
-                    Export
-                </a>
-            </button>
-
+        <div class="container col-4" style="height: 300px; display: flex; flex-direction: column; justify-content: flex-end ;margin-bottom: 20px;">
+            <h1 style="text-align:center; margin-bottom: 0;">Export file</h1>
+            <div class="row justify-content-center align-items-end">
+                <button class="btn btn-danger"><a href="file.php">Export</a></button>
+            </div>
         </div>
 
-        <div class="container col-4">
-            <h1 style="text-align:center">
-                Import file
-            </h1>
-            <button class="btn btn-danger" style="margin-left:42%;">
-                <a href="file.php">
-                    import
-                </a>
-            </button>
+        <div class="container col-4" style="height: 300px; display: flex; flex-direction: column; justify-content: flex-end ;margin-bottom: 20px;">
+            <h1 style="text-align:center">Import file</h1>
+            <div class="row justify-content-center align-items-center">
+                <button class="btn btn-danger">
+                    <a href="file.php">import</a>
+                </button>
+            </div>
         </div>
 
-        <div class="container col-4">
+        <div class="container col-4" style="height: 300px; display: flex; flex-direction: column; justify-content: flex-end ;margin-bottom: 20px;">
             <h1 style="text-align:center">
                 View table
             </h1>
-            <button class="btn btn-danger" style="margin-left:42%;">
-                <a href="view.php">
-                    View
-                </a>
-            </button>
+            <div class="row justify-content-center align-items-center">
+                <button class="btn btn-danger">
+                    <a href="view.php">
+                        View
+                    </a>
+                </button>
+            </div>
         </div>
+
     </div>
+    <footer class="page-footer">
+        <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
