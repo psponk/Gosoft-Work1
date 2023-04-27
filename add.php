@@ -7,13 +7,13 @@ if (isset($_POST['add_data'])) {
     if (!$con) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $course = $_POST['course'];
-    $sqlquery = "INSERT INTO students (fullname, email, phone, course) VALUES ('$fullname', '$email', '$phone', '$course')";
+    $asset_type = $_POST['asset_type'];
+    $asset_number = $_POST['asset_number'];
+    $asset_status = $_POST['asset_status'];
+    $asset_condition = $_POST['asset_condition'];
+    $sqlquery = "INSERT INTO asset (asset_type, asset_number, asset_status, asset_condition) VALUES ('$asset_type', '$asset_number', '$asset_status', '$asset_condition')";
 
-    if($fullname != "" && $email != "" && $phone != "" && $course != ""){
+    if($asset_type != "" && $asset_number != "" && $asset_status != "" && $asset_condition != ""){
         $result = mysqli_query($con, $sqlquery);
         if ($result) {
             $_SESSION['addmessage'] = "Successfully Add";

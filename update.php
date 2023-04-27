@@ -8,40 +8,40 @@ if (isset($_POST['update_data'])) {
         die("Connection failed: " . mysqli_connect_error());
     }
     $id = $_GET['id'];
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    echo $email;
-    $phone = $_POST['phone'];
-    $course = $_POST['course'];
+    $asset_type = $_POST['asset_type'];
+    $asset_number = $_POST['asset_number'];
+    echo $asset_number;
+    $asset_status = $_POST['asset_status'];
+    $asset_condition = $_POST['asset_condition'];
 
-    if(!empty($fullname)){
-        $sqlquery = "UPDATE students
-        SET fullname = '$fullname'
-        WHERE id = $id;
+    if(!empty($asset_type)){
+        $sqlquery = "UPDATE asset
+        SET asset_type = '$asset_type'
+        WHERE asset_id = $id;
         ";
         $result = mysqli_query($con, $sqlquery);
     }
 
-    if(!empty($email)){
-        $sqlquery = "UPDATE students
-        SET email = '$email'
-        WHERE id = $id;
+    if(!empty($asset_number)){
+        $sqlquery = "UPDATE asset
+        SET asset_number = '$asset_number'
+        WHERE asset_id = $id;
         ";
         $result = mysqli_query($con, $sqlquery);
     }
 
-    if(!empty($phone)){
-        $sqlquery = "UPDATE students
-        SET phone = '$phone'
-        WHERE id = $id;
+    if(!empty($asset_status)){
+        $sqlquery = "UPDATE asset
+        SET asset_status = '$asset_status'
+        WHERE asset_id = $id;
         ";
         $result = mysqli_query($con, $sqlquery);
     }
 
-    if(!empty($course)){
-        $sqlquery = "UPDATE students
-        SET course = '$course'
-        WHERE id = $id;
+    if(!empty($asset_condition)){
+        $sqlquery = "UPDATE asset
+        SET asset_condition = '$asset_condition'
+        WHERE asset_id = $id;
         ";
         $result = mysqli_query($con, $sqlquery);
     }

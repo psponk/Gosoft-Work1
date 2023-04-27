@@ -31,6 +31,15 @@ include 'dbconfig.php'
         border-top: 1px solid #dee2e6;
     }
 
+    .page-footer {
+    background-color: #ad2828;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 0;
+    height: 30px;
+}
+
+
     @media screen and (max-width: 768px) {
         table {
             display: block;
@@ -86,10 +95,10 @@ include 'dbconfig.php'
                 <tr style="color:white">
                     <th scope="col" style="padding: 0.75rem; " font-family:Times New Roman""></th>
                     <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
-                    <th scope="col" style="padding: 0.75rem; width: 350px">Fullname</th>
-                    <th scope="col" style="padding: 0.75rem; width: 350px">Email</th>
-                    <th scope="col" style="padding: 0.75rem; width: 350px">Phone</th>
-                    <th scope="col" style="padding: 0.75rem; width: 350px">Course</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">asset_type</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">asset_number</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">asset_status</th>
+                    <th scope="col" style="padding: 0.75rem; width: 350px">asset_condition</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,7 +152,7 @@ include 'dbconfig.php'
                     $db = $_GET['db'];
                     $con = mysqli_connect("localhost", "root", "", $db);
                     $search = $_POST['search'];
-                    $sql = "Select * from `students` where id like '%$search%' or fullname like '%$search%' or email like '%$search%' or phone like '%$search%' or course like '%$search%'";
+                    $sql = "Select * from `asset` where asset_id like '%$search%' or asset_type like '%$search%' or asset_number like '%$search%' or asset_status like '%$search%' or asset_condition like '%$search%'";
                     $result = mysqli_query($con, $sql);
                     if ($result) {
                         if (mysqli_num_rows($result) > 0) {
@@ -151,22 +160,22 @@ include 'dbconfig.php'
                 ?>
                                 <tr>
                                     <td style="width:10px; text-align: center;">
-                                        <input type="checkbox" name="delete_id[]" value="<?= $row['id']; ?>">
+                                        <input type="checkbox" name="delete_id[]" value="<?= $row['asset_id']; ?>">
                                     </td>
                                     <th>
-                                        <?= $row['id']; ?>
+                                        <?= $row['asset_id']; ?>
                                     </th>
                                     <td>
-                                        <?= $row['fullname']; ?>
+                                        <?= $row['asset_type']; ?>
                                     </td>
                                     <td>
-                                        <?= $row['email']; ?>
+                                        <?= $row['asset_number']; ?>
                                     </td>
                                     <td>
-                                        <?= $row['phone']; ?>
+                                        <?= $row['asset_status']; ?>
                                     </td>
                                     <td>
-                                        <?= $row['course']; ?>
+                                        <?= $row['asset_condition']; ?>
                                     </td>
                                 </tr>
                             <?php
@@ -183,7 +192,7 @@ include 'dbconfig.php'
                     $db = $_GET['db'];
                     $con = mysqli_connect("localhost", "root", "", $db);
 
-                    $query = "SELECT * FROM students";
+                    $query = "SELECT * FROM asset";
                     $query_run = mysqli_query($con, $query);
 
                     if (mysqli_num_rows($query_run) > 0) {
@@ -191,22 +200,22 @@ include 'dbconfig.php'
                         ?>
                             <tr>
                                 <td style="width:10px; text-align: center;">
-                                    <input type="checkbox" name="delete_id[]" value="<?= $row['id']; ?>">
+                                    <input type="checkbox" name="delete_id[]" value="<?= $row['asset_id']; ?>">
                                 </td>
                                 <th>
-                                    <?= $row['id']; ?>
+                                    <?= $row['asset_id']; ?>
                                 </th>
                                 <td>
-                                    <?= $row['fullname']; ?>
+                                    <?= $row['asset_type']; ?>
                                 </td>
                                 <td>
-                                    <?= $row['email']; ?>
+                                    <?= $row['asset_number']; ?>
                                 </td>
                                 <td>
-                                    <?= $row['phone']; ?>
+                                    <?= $row['asset_status']; ?>
                                 </td>
                                 <td>
-                                    <?= $row['course']; ?>
+                                    <?= $row['asset_condition']; ?>
                                 </td>
                             </tr>
                         <?php
@@ -248,6 +257,9 @@ include 'dbconfig.php'
             }
         }
     </script>
+    <footer class="page-footer">
+            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+        </footer>
 </body>
 
 </html>

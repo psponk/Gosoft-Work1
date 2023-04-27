@@ -42,10 +42,21 @@ include 'dbconfig.php'
             overflow-x: auto;
             white-space: nowrap;
         }
-        a{
-            font-size:5px
-        }
+
     }
+
+    .page-footer {
+    background-color: #ad2828;
+    text-align: center;
+    color: white;
+    margin: 10px 0 0 0;
+    position:relative;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+}
+
 
     
     
@@ -124,10 +135,10 @@ include 'dbconfig.php'
             <thead class="bg-danger">
                 <tr style="color:white;">
                     <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
-                    <th scope="col" style="padding: 0.75rem;">Fullname</th>
-                    <th scope="col" style="padding: 0.75rem;">Email</th>
-                    <th scope="col" style="padding: 0.75rem;">Phone</th>
-                    <th scope="col" style="padding: 0.75rem;">Course</th>
+                    <th scope="col" style="padding: 0.75rem;">asset_type</th>
+                    <th scope="col" style="padding: 0.75rem;">asset_number</th>
+                    <th scope="col" style="padding: 0.75rem;">asset_status</th>
+                    <th scope="col" style="padding: 0.75rem;">asset_condition</th>
                     <th scope="col" style="text-align: center ; width: 180px;padding: 0.75rem;">Manage</th>
                 </tr>
             </thead>
@@ -182,24 +193,24 @@ include 'dbconfig.php'
                                                     <form name="add_data" action="add.php?db=<?php echo $_GET['db'] ?>" method="post">
                                                         <center?>
                                                             <div>
-                                                                <p>fullname</p>
-                                                                <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                                <p>asset_type</p>
+                                                                <input type="text" name="asset_type" id="asset_type" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
                                                             </div>
 
                                                             <div>
-                                                                <p>email</p>
-                                                                <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                                <p>asset_number</p>
+                                                                <input type="text" name="asset_number" id="asset_number" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
 
                                                             </div>
 
                                                             <div>
-                                                                <p>phone</p>
-                                                                <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                                <p>asset_status</p>
+                                                                <input type="text" name="asset_status" id="asset_status" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
                                                             </div>
 
                                                             <div>
-                                                                <p>course</p>
-                                                                <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
+                                                                <p>asset_condition</p>
+                                                                <input type="text" name="asset_condition" id="asset_condition" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
 
                                                             </div>
                                                             </center>
@@ -228,7 +239,7 @@ include 'dbconfig.php'
     if (isset($_POST['submit'])) {
         $db = $_GET['db'];
         $search = $_POST['search'];
-        $sql = "Select * from `students` where id like '%$search%' or fullname like '%$search%' or email like '%$search%' or phone like '%$search%' or course like '%$search%'";
+        $sql = "Select * from `asset` where asset_id like '%$search%' or asset_type like '%$search%' or asset_number like '%$search%' or asset_status like '%$search%' or asset_condition like '%$search%'";
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -239,21 +250,21 @@ include 'dbconfig.php'
         if ($result) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $id = $row['id'];
-                    $fullname = $row['fullname'];
-                    $email = $row['email'];
-                    $phone = $row['phone'];
-                    $course = $row['course'];
+                    $id = $row['asset_id'];
+                    $asset_type = $row['asset_type'];
+                    $asset_number = $row['asset_number'];
+                    $asset_status = $row['asset_status'];
+                    $asset_condition = $row['asset_condition'];
                     echo '
                     <tr>
                         <td style="text-align:center; font-weight : bold">' . $id . '</td>
-                        <td>' . $fullname . '</td>
-                        <td>' . $email . '</td>
-                        <td>' . $phone . '</td>
-                        <td>' . $course . '</td>
+                        <td>' . $asset_type . '</td>
+                        <td>' . $asset_number . '</td>
+                        <td>' . $asset_status . '</td>
+                        <td>' . $asset_condition . '</td>
                         <td align="center" width="180px;">
                             <div>
-                                <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Edit</a></button>
+                                <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&asset_type=' . $asset_type . '&asset_number=' . $asset_number . '&asset_status=' . $asset_status . '&asset_condition=' . $asset_condition . '" class="text-light">Edit</a></button>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                             </div>
                         </td>
@@ -276,25 +287,25 @@ include 'dbconfig.php'
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "SELECT * FROM students";
+        $sql = "SELECT * FROM asset";
         $result = mysqli_query($con, $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $id = $row['id'];
-                $fullname = $row['fullname'];
-                $email = $row['email'];
-                $phone = $row['phone'];
-                $course = $row['course'];
+                $id = $row['asset_id'];
+                $asset_type = $row['asset_type'];
+                $asset_number = $row['asset_number'];
+                $asset_status = $row['asset_status'];
+                $asset_condition = $row['asset_condition'];
                 echo '
                 <tr>
                     <th scope="row" style="text-align:center;">' . $id . '</th>
-                    <td>' . $fullname . '</td>
-                    <td>' . $email . '</td>
-                    <td>' . $phone . '</td>
-                    <td>' . $course . '</td>
+                    <td>' . $asset_type . '</td>
+                    <td>' . $asset_number . '</td>
+                    <td>' . $asset_status . '</td>
+                    <td>' . $asset_condition . '</td>
                     <td align="center" width="180px;">
                         <div>
-                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&fullname=' . $fullname . '&email=' . $email . '&phone=' . $phone . '&course=' . $course . '" class="text-light">Edit</a></button>
+                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&asset_type=' . $asset_type . '&asset_number=' . $asset_number . '&asset_status=' . $asset_status . '&asset_condition=' . $asset_condition . '" class="text-light">Edit</a></button>
                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                         </div>
                     </td>
@@ -313,6 +324,9 @@ include 'dbconfig.php'
             $('#myTable').DataTable();
         });
     </script>
+    <footer class="page-footer">
+            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+        </footer>
 
 </body>
 

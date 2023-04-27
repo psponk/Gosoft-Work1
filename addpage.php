@@ -32,6 +32,15 @@ include 'dbconfig.php'
     p {
         margin: 0px 0px 0px 0px;
     }
+
+    .page-footer {
+    background-color: #ad2828;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 0;
+    height: 30px;
+}
+
 </style>
 
 <body style="background-color:white">
@@ -83,7 +92,7 @@ include 'dbconfig.php'
             <div class="card-body text-center">
                 <form method="GET" style="display: inline-block;">
                     <p style="display: inline-block;">
-                        <label for="fullname">Select Database:</label>
+                        <label for="asset_type">Select Database:</label>
                         <select onchange="this.form.submit()" name="db" class="form-control" style="margin-bottom: 20px ;max-width: 150px; display: inline-block;">
                             <option value="students" <?php if (isset($_GET['db']) && $_GET['db'] == 'students') echo 'selected'; ?>>students</option>
                             <option value="studentss" <?php if (isset($_GET['db']) && $_GET['db'] == 'studentss') echo 'selected'; ?>>studentss</option>
@@ -94,28 +103,28 @@ include 'dbconfig.php'
                 <form name="add_data" action="add.php?db=<?php echo $_GET['db'] ?>" method="post">
                     <center>
                         <div>
-                            <p>fullname</p>
-                            <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                            <p>asset_type</p>
+                            <input type="text" name="asset_type" id="asset_type" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
                         </div>
 
 
 
                         <div>
-                            <p>email</p>
-                            <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                            <p>asset_number</p>
+                            <input type="text" name="asset_number" id="asset_number" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
 
                         </div>
 
 
 
                         <div>
-                            <p>phone</p>
-                            <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                            <p>asset_status</p>
+                            <input type="text" name="asset_status" id="asset_status" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
                         </div>
 
                         <div>
-                            <p>course</p>
-                            <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
+                            <p>asset_condition</p>
+                            <input type="text" name="asset_condition" id="asset_condition" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0">
 
                         </div>
                     </center>
@@ -126,6 +135,10 @@ include 'dbconfig.php'
             </div>
         </div>
     </center>
+    <footer class="page-footer">
+            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+        </footer>
 </body>
+
 
 </html>

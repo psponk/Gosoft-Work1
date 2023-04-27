@@ -13,7 +13,7 @@ if (isset($_GET["deleteid"])) {
         die("Connection failed: " . mysqli_connect_error());
     }
     $id=$_GET['deleteid'];
-    $sql = "delete from `students` where id=$id";
+    $sql = "delete from `asset` where asset_id=$id";
     $result = mysqli_query($con,$sql);
     if($result){
         $_SESSION['deletemessage'] = "Successfully Delete";

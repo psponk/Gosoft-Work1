@@ -10,7 +10,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href='node_modules\css.gg\icons\all.css' rel='stylesheet'>
-    <link href='node_modules\css.gg\icons\all.css' rel='stylesheet'>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery -->
@@ -24,9 +23,18 @@
     .card {
     border-radius: 20px;
 }
+
+.page-footer {
+    background-color: #ad2828;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 0;
+    height: 30px;
+}
+
 </style>
 
-<body style="background-color:white">
+<body style="background-color:white;">
     <!-- navbar -->
     <nav class="navbar navbar-light" style="background-color: #ffff;">
         <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
@@ -66,7 +74,7 @@
     </nav>
 
     <!-- main import export part -->
-    <div class="container" style="max-width: 800px; margin-top:8%">
+    <div class="container" style="max-width: 800px; margin-top:8% ; margin-bottom:230px">
         <div class="row">
             <div class="col-sm-6" style="margin-top: 1%">
                 <?php
@@ -158,6 +166,9 @@
             </div>
         </div>
     </div>
+    <footer class="page-footer">
+            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+        </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

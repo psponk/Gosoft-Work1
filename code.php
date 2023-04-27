@@ -24,7 +24,7 @@ if(isset($_POST['export_excel_btn']))
     $dbname = $db;
 
 
-    $student = "SELECT * FROM students";
+    $student = "SELECT * FROM asset";
     $con = new mysqli($servername, $username, $password, $dbname);
     $query_run = mysqli_query($con, $student);
 
@@ -33,21 +33,21 @@ if(isset($_POST['export_excel_btn']))
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        $sheet->setCellValue('A1', 'ID');
-        $sheet->setCellValue('B1', 'Full Name');
-        $sheet->setCellValue('C1', 'Email');
-        $sheet->setCellValue('D1', 'Phone');
-        $sheet->setCellValue('E1', 'Course');
+        $sheet->setCellValue('A1', 'asset_id');
+        $sheet->setCellValue('B1', 'asset_type');
+        $sheet->setCellValue('C1', 'asset_number');
+        $sheet->setCellValue('D1', 'asset_status');
+        $sheet->setCellValue('E1', 'asset_condition');
 
         $rowCount = 2;
 
         foreach($query_run as $data)
         {
-            $sheet->setCellValue('A'.$rowCount, $data['id']);
-            $sheet->setCellValue('B'.$rowCount, $data['fullname']);
-            $sheet->setCellValue('C'.$rowCount, $data['email']);
-            $sheet->setCellValue('D'.$rowCount, $data['phone']);
-            $sheet->setCellValue('E'.$rowCount, $data['course']);
+            $sheet->setCellValue('A'.$rowCount, $data['asset_id']);
+            $sheet->setCellValue('B'.$rowCount, $data['asset_type']);
+            $sheet->setCellValue('C'.$rowCount, $data['asset_number']);
+            $sheet->setCellValue('D'.$rowCount, $data['asset_status']);
+            $sheet->setCellValue('E'.$rowCount, $data['asset_condition']);
             $rowCount++;
         }
 
@@ -108,11 +108,11 @@ if(isset($_POST['save_excel_data']))
         {
             if($count > 0)
             {
-                $fullname = $row['0'];
-                $email = $row['1'];
-                $phone = $row['2'];
-                $course = $row['3'];
-                $studentQuery = "INSERT INTO students (fullname,email,phone,course) VALUES ('$fullname','$email','$phone','$course')";
+                $asset_type = $row['0'];
+                $asset_number = $row['1'];
+                $asset_status = $row['2'];
+                $asset_condition = $row['3'];
+                $studentQuery = "INSERT INTO asset (asset_type,asset_number,asset_status,asset_condition) VALUES ('$asset_type','$asset_number','$asset_status','$asset_condition')";
                 $result = mysqli_query($con, $studentQuery);
                 $msg = true;
             }

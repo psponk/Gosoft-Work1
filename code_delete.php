@@ -10,7 +10,7 @@ if(isset($_POST['delete_multiple_btn']) && isset($_POST['delete_id']))
     if(!empty($all_id)){
         $extract_id = implode(',' , $all_id);
 
-        $query = "DELETE FROM students WHERE id IN($extract_id) ";
+        $query = "DELETE FROM asset WHERE asset_id IN($extract_id) ";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)

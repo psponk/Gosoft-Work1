@@ -20,6 +20,15 @@ include 'dbconfig.php'
         display: inline-block;
         max-width: 200px
     }
+
+    .page-footer {
+    background-color: #ad2828;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 0;
+    height: 30px;
+}
+
 </style>
 
 <body style="background-color:white">
@@ -41,34 +50,37 @@ include 'dbconfig.php'
             <div class="card-body text-center">
                 <form name="update_data" action="update.php?db=<?php echo $_GET['db'] ?>&id=<?php echo $_GET['id'] ?>" method="post">
                     <div>
-                        <p>fullname</p>
-                        <input type="text" name="fullname" id="fullname" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['fullname'] ?>">
+                        <p>asset_type</p>
+                        <input type="text" name="asset_type" id="asset_type" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['asset_type'] ?>">
                     </div>
 
 
 
                     <div>
-                        <p>email</p>
-                        <input type="text" name="email" id="email" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['email'] ?>">
+                        <p>asset_number</p>
+                        <input type="text" name="asset_number" id="asset_number" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['asset_number'] ?>">
 
                     </div>
 
 
 
                     <div>
-                        <p>phone</p>
-                        <input type="text" name="phone" id="phone" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['phone'] ?>">
+                        <p>asset_status</p>
+                        <input type="text" name="asset_status" id="asset_status" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['asset_status'] ?>">
                     </div>
 
                     <div>
-                        <p>course</p>
-                        <input type="text" name="course" id="course" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['course'] ?>">
+                        <p>asset_condition</p>
+                        <input type="text" name="asset_condition" id="asset_condition" class="form-control" id="validationCustomUsername" style="margin: 0 0 0 0; padding: 0 0 0 0" placeholder="<?php echo $_GET['asset_condition'] ?>">
                     </div>
                     <button name="update_data" type="submit" class="btn btn-success" style="margin-top:10px">Submit</button>
 
                 </form>
             </div>
     </center>
+    <footer class="page-footer">
+            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+        </footer>
 </body>
 
 </html>
