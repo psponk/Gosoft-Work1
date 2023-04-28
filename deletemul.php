@@ -32,13 +32,22 @@ include 'dbconfig.php'
     }
 
     .page-footer {
-    background-color: #ad2828;
-    text-align: center;
-    color: white;
-    margin: 0 0 0 0;
-    height: 30px;
-}
+        background-color: #ad2828;
+        text-align: center;
+        color: white;
+        margin: 0 0 0 0;
+        height: 30px;
+    }
 
+    .head {
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'myFirstFont';
+        text-align: center;
+        margin-top: 50px;
+        text-shadow: 1px 1px 8px #000000;
+    }
 
     @media screen and (max-width: 768px) {
         table {
@@ -52,7 +61,7 @@ include 'dbconfig.php'
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-light" style="background-color: #ffff;">
-        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;" href="index.php">Asset Management System</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -88,9 +97,15 @@ include 'dbconfig.php'
         </div>
     </nav>
 
-    
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('red2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;background-attachment: fixed;"">
+        <h1 class=" head" style="margin: 0 0 0 0;">Delete</h1>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
+
+
     <div class="container">
-        <table class="table table-hover table-striped" ;>
+        <table class="table table-hover table-striped" id="asset-table" ;>
             <thead class="bg-danger">
                 <tr style="color:white">
                     <th scope="col" style="padding: 0.75rem; " font-family:Times New Roman""></th>
@@ -145,6 +160,8 @@ include 'dbconfig.php'
                             <button type="submit" name="delete_multiple_btn" class="btn btn-danger btn-sm" onclick="return confirmDelete()" style="margin-right: 10px;margin-bottom: 10px">Delete</button>
                             <input type="checkbox" id="select-all-checkbox" style="padding-left:100px;margin-bottom: 10px ;">
                             <p style="font-size: 20px; margin: 0px 0px 10px 5px;">Select All</p>
+                            <p style="font-size: 15px; margin: 0px 0px 10px 5px;">(You have selected <span id="selected-count">0</span> items.)</p>
+
                         </div>
                 </div>
                 <?php
@@ -257,9 +274,65 @@ include 'dbconfig.php'
             }
         }
     </script>
+
+
+
+    <script>
+        const checkboxes = document.querySelectorAll('#asset-table input[type="checkbox"]');
+        const selectAllCheckbox = document.querySelector('#select-all-checkbox');
+        const deleteBtn = document.querySelector('button[name="delete_multiple_btn"]');
+        const countLabel = document.querySelector('#selected-count');
+
+        let checkedCount = 0;
+
+        // add event listener to each checkbox
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                if (checkbox.checked) {
+                    checkedCount++;
+                } else {
+                    checkedCount--;
+                }
+                // update the select all checkbox based on the checked count
+                if (checkedCount === checkboxes.length) {
+                    selectAllCheckbox.checked = true;
+                } else {
+                    selectAllCheckbox.checked = false;
+                }
+                // enable or disable the delete button based on the checked count
+                if (checkedCount > 0) {
+                    deleteBtn.disabled = false;
+                } else {
+                    deleteBtn.disabled = true;
+                }
+                // update the count label
+                countLabel.innerText = checkedCount;
+            });
+        });
+
+        // add event listener to select all checkbox
+        selectAllCheckbox.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            checkedCount = selectAllCheckbox.checked ? checkboxes.length : 0;
+            // enable or disable the delete button based on the checked count
+            if (checkedCount > 0) {
+                deleteBtn.disabled = false;
+            } else {
+                deleteBtn.disabled = true;
+            }
+            // update the count label
+            countLabel.innerText = checkedCount;
+        });
+    </script>
+
+
+
+
     <footer class="page-footer">
-            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
-        </footer>
+        <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

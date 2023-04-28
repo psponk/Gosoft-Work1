@@ -32,6 +32,16 @@
     height: 30px;
 }
 
+.head {
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'myFirstFont';
+        text-align: center;
+        margin-top: 50px;
+        text-shadow: 1px 1px 8px #000000;
+    }
+
 </style>
 
 <body style="background-color:white;">
@@ -72,6 +82,12 @@
             </ul>
         </div>
     </nav>
+
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('red2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;background-attachment: fixed;"">
+        <h1 class=" head" style="margin: 0 0 0 0;">Import / Export</h1>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
 
     <!-- main import export part -->
     <div class="container" style="max-width: 800px; margin-top:8% ; margin-bottom:230px">

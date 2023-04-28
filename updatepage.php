@@ -29,6 +29,16 @@ include 'dbconfig.php'
     height: 30px;
 }
 
+.head {
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'myFirstFont';
+        text-align: center;
+        margin-top: 50px;
+        text-shadow: 1px 1px 8px #000000;
+    }
+
 </style>
 
 <body style="background-color:white">

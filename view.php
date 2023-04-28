@@ -45,21 +45,37 @@ include 'dbconfig.php'
 
     }
 
+    .head {
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'myFirstFont';
+        text-align: center;
+        margin-top: 50px;
+        text-shadow: 1px 1px 8px #000000;
+    }
+
     .page-footer {
-    background-color: #ad2828;
-    text-align: center;
-    color: white;
-    margin: 10px 0 0 0;
-    position:relative;
-   left:0px;
-   bottom:0px;
-   height:30px;
-   width:100%;
-}
+        background-color: #ad2828;
+        text-align: center;
+        color: white;
+        margin: 10px 0 0 0;
+        position: relative;
+        left: 0px;
+        bottom: 0px;
+        height: 30px;
+        width: 100%;
+    }
 
+    .modal-content {
+        border-radius: 20px;
+    }
 
-    
-    
+    .modal-header {
+        background-color: #de152c;
+        border-radius: 20px 20px 0px 0px;
+        color: white;
+    }
 </style>
 
 <body style="background-color:white">
@@ -93,7 +109,7 @@ include 'dbconfig.php'
     <!-- navbar -->
 
     <nav class="navbar navbar-light" style="background-color: #ffff;">
-        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;" href="index.php">Asset Management System</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -128,6 +144,12 @@ include 'dbconfig.php'
             </ul>
         </div>
     </nav>
+
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('red2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;background-attachment: fixed;"">
+        <h1 class=" head" style="margin: 0 0 0 0;">Table</h1>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
 
 
     <div class="container" style="padding-top: 10px">
@@ -200,7 +222,6 @@ include 'dbconfig.php'
                                                             <div>
                                                                 <p>asset_number</p>
                                                                 <input type="text" name="asset_number" id="asset_number" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
-
                                                             </div>
 
                                                             <div>
@@ -211,7 +232,6 @@ include 'dbconfig.php'
                                                             <div>
                                                                 <p>asset_condition</p>
                                                                 <input type="text" name="asset_condition" id="asset_condition" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0">
-
                                                             </div>
                                                             </center>
                                                 </div>
@@ -228,6 +248,55 @@ include 'dbconfig.php'
                                 <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; ">
                                     <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
                                 </button>
+
+
+
+                                <button button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; " data-toggle="modal" data-target="#exportModal">
+                                    Export File
+                                    <i class="gg-export" style="display:inline-block; margin-left: 10px;"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exportModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form action="code.php" method="POST">
+                                                <div class="modal-header" style="background-color:#de152c ;border-radius: 20px 20px 0px 0px ;color:white">
+                                                    <h5 class="modal-title" id="exportModalLabel">Export File</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <label for="db" class="col-form-label">Select Database</label>
+                                                        <select name="db" id="db" class="form-control">
+                                                            <option value="students">students</option>
+                                                            <option value="studentss">studentss</option>
+                                                            <option value="studentsss">studentsss</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <label for="export_file_type" class="col-form-label">File Type</label>
+                                                        <select name="export_file_type" id="export_file_type" class="form-control">
+                                                            <option value="xlsx">XLSX</option>
+                                                            <option value="xls">XLS</option>
+                                                            <option value="csv">CSV</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" name="export_excel_btn" class="btn btn-success">Export</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
                         </div>
                     <?php endif; ?>
                     </div>
@@ -287,7 +356,7 @@ include 'dbconfig.php'
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "SELECT * FROM asset";
+        $sql = "SELECT * FROM asset WHERE 1";
         $result = mysqli_query($con, $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -305,7 +374,51 @@ include 'dbconfig.php'
                     <td>' . $asset_condition . '</td>
                     <td align="center" width="180px;">
                         <div>
-                            <button type="button" class="btn btn-info btn-sm"><a href="updatepage.php?id=' . $id . '&db=' . $db . '&asset_type=' . $asset_type . '&asset_number=' . $asset_number . '&asset_status=' . $asset_status . '&asset_condition=' . $asset_condition . '" class="text-light">Edit</a></button>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal' . $id . '' . $asset_type . '' . $asset_number . '' . $asset_status . '' . $asset_condition . '">Edit</button>
+                            
+                            <div class="modal" id="myModal' . $id . '' . $asset_type . '' . $asset_number . '' . $asset_status . '' . $asset_condition . '" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content" style="border-radius: 20px">
+                                    <div class="modal-header" style="background-color:#de152c ;border-radius: 20px 20px 0px 0px ;color:white">
+                                        <h5 class="modal-title">Update Data ID = ' . $id . '</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <form name="update_data" action="update.php?db=' . $db . '&id=' . $id . '&asset_type=' . $asset_type . '&asset_number=' . $asset_number . '&asset_status=' . $asset_status . '&asset_condition=' . $asset_condition . '" method="post">
+                                            <center?>
+                                                <div>
+                                                    <p>asset_type</p>
+                                                    <input type="text" name="asset_type" id="asset_type" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0;" placeholder="' . $asset_type . '">
+                                                </div>
+
+                                                <div>
+                                                    <p>asset_number</p>
+                                                    <input type="text" name="asset_number" id="asset_number" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0;" placeholder="' . $asset_number . '">
+
+                                                </div>
+
+                                                <div>
+                                                    <p>asset_status</p>
+                                                    <input type="text" name="asset_status" id="asset_status" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0;" placeholder="' . $asset_status . '">
+                                                </div>
+
+                                                <div>
+                                                    <p>asset_condition</p>
+                                                    <input type="text" name="asset_condition" id="asset_condition" class="form-control" id="validationCustomUsername" style="margin: 0 0 10px 0; padding: 0 0 0 0;" placeholder="' . $asset_condition . '">
+
+                                                </div>
+                                                </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button name="update_data" type="submit" class="btn btn-success" style="margin-top: 15px">Submit</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
                         </div>
                     </td>
@@ -316,17 +429,18 @@ include 'dbconfig.php'
         }
     }
     ?>
-    </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
+        var myModal = new bootstrap.Modal(document.getElementById('exportModal'));
     </script>
     <footer class="page-footer">
-            <p>&copy; 2023 Asset Management System. All rights reserved.</p>
-        </footer>
+        <p>&copy; 2023 Asset Management System. All rights reserved.</p>
+    </footer>
 
 </body>
 

@@ -16,7 +16,7 @@
 }
 
 @font-face {
-  font-family: myFirstFont;
+  font-family: "myFirstFont";
   src: url(Zeppelin52.otf);
 }
 
@@ -62,7 +62,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
   font-weight: bold;
-  font-family: myFirstFont;
+  font-family: "myFirstFont";
 }
 
 li a:hover:not(.active) {
@@ -205,4 +205,14 @@ a.button1:hover {
 
 .navbar .dropdown-menu {
   z-index: 9999 !important;
+}
+
+.head {
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'myFirstFont';
+  text-align: center;
+  margin-top: 50px;
+  text-shadow: 1px 1px 8px #000000;
 }

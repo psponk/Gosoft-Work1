@@ -34,19 +34,33 @@ include 'dbconfig.php'
     }
 
     .page-footer {
-    background-color: #ad2828;
-    text-align: center;
-    color: white;
-    margin: 0 0 0 0;
-    height: 30px;
-}
+        background-color: #ad2828;
+        text-align: center;
+        color: white;
+        margin: 85px 0 0 0;
+        position: relative;
+        left: 0px;
+        bottom: 0px;
+        height: 30px;
+        width: 100%;
+    }
+
+    .head {
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'myFirstFont';
+        text-align: center;
+        margin-top: 50px;
+        text-shadow: 1px 1px 8px #000000;
+    }
 
 </style>
 
 <body style="background-color:white">
     <!-- navbar -->
     <nav class="navbar navbar-light" style="background-color: #ffff;">
-        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
+        <a style="text-decoration: none;font-weight: bold;font-family: 'Times New Roman';color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;"href="index.php">Asset Management System</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -81,6 +95,12 @@ include 'dbconfig.php'
             </ul>
         </div>
     </nav>
+
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('red2.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;background-attachment: fixed;"">
+        <h1 class=" head" style="margin: 0 0 0 0;">Add Data</h1>
+    </div>
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-top: 20px">
 
     <center style="margin-top: 5%;">
 
