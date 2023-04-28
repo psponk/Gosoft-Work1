@@ -153,7 +153,7 @@ include 'dbconfig.php'
 
 
     <div class="container" style="padding-top: 10px">
-        <table id="myTable" class="table table-hover table-striped">
+        <table id="myTable" class="table table-hover table-striped" style="margin-top: 20px">
             <thead class="bg-danger">
                 <tr style="color:white;">
                     <th scope="col" style="padding: 0.75rem; text-align:center; width: 20px">ID</th>
@@ -201,7 +201,7 @@ include 'dbconfig.php'
                                         Add Data
                                     </button>
 
-                                    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content" style="border-radius: 20px">
                                                 <div class="modal-header" style="background-color:#de152c ;border-radius: 20px 20px 0px 0px ;color:white">
@@ -268,7 +268,7 @@ include 'dbconfig.php'
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="row">
+                                                    <div class="row" style="margin:5px 15px 15px 5px;">
                                                         <label for="db" class="col-form-label">Select Database</label>
                                                         <select name="db" id="db" class="form-control">
                                                             <option value="students">students</option>
@@ -276,7 +276,7 @@ include 'dbconfig.php'
                                                             <option value="studentsss">studentsss</option>
                                                         </select>
                                                     </div>
-                                                    <div class="row mt-3">
+                                                    <div class="row mt-3" style="margin:5px 15px 15px 5px;">
                                                         <label for="export_file_type" class="col-form-label">File Type</label>
                                                         <select name="export_file_type" id="export_file_type" class="form-control">
                                                             <option value="xlsx">XLSX</option>
@@ -420,6 +420,7 @@ include 'dbconfig.php'
                             </div>
                         </div>
                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(' . $id . ',\'' . $db . '\')">Delete</button>
+                            
                         </div>
                     </td>
                 </tr>';

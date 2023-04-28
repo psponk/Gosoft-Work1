@@ -25,7 +25,7 @@ class ConditionalDataBarExtension
     private $negativeBarBorderColorSameAsPositive;
 
     /** @var string */
-    private $axisPosition
+    private $axisPosition;
     // <dataBar> children
 
     /** @var ConditionalFormatValueObject */
