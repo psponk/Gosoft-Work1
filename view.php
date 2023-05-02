@@ -109,7 +109,7 @@ include 'dbconfig.php'
     <!-- navbar -->
 
     <nav class="navbar navbar-light" style="background-color: #ffff;">
-        <a style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;" href="index.php">Asset Management System</a>
+        <a class="top" style="text-decoration: none;font-weight: bold;font-family: myFirstFont;color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;" href="index.php">Asset Management System</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#nav1" aria-controls="nav1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -245,8 +245,8 @@ include 'dbconfig.php'
                                 </div>
 
 
-                                <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right; ">
-                                    <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;">Select</a>
+                                <button class="btn btn-dark" style="margin-top: 25px;margin-right: 10px ;float: right;text-decoration: none; ">
+                                    <a href="deletemul.php?db=<?php echo $_GET['db']; ?>" style="color:white;text-decoration: none;">Select</a>
                                 </button>
 
 

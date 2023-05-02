@@ -21,7 +21,7 @@
 }
 
 body {
-  background-image: url("logo2.jpg");
+  background-image: url("logo4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -211,8 +211,49 @@ a.button1:hover {
   color: #ffffff;
   font-size: 50px;
   font-weight: bold;
-  font-family: 'myFirstFont';
+  font-family: "myFirstFont";
   text-align: center;
   margin-top: 50px;
   text-shadow: 1px 1px 8px #000000;
+}
+
+.top:hover {
+  color: #780505 !important;
+}
+
+.polar {
+  width: 60%;
+  height: 400px;
+  margin: 50px auto;
+}
+
+.dot-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin: 0 10px;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: black;
+}
+
+.content {
+  text-align: center;
+}
+
+.content-item {
+  display: none;
+}
+
+.content-item.active {
+  display: block;
 }

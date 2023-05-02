@@ -14,7 +14,23 @@
   <!-- Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
+
+
+<style>
+
+
+a:hover {
+  color: black !important;
+}
+
+</style>
 <body>
+
+<a style="text-decoration: none;font-weight: bold;font-family: 'myFirstFont';color: #de152c;font-size:25px;text-align: center; padding: 0 0 0 0;" href="index.php">Asset Management System</a>
+
+
+
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exportModal">
     Export File
     <i class="gg-export" style="display:inline-block; margin-left: 10px;"></i>
